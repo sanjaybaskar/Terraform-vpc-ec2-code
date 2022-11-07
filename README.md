@@ -1,3 +1,5 @@
+AWS VPC setup IaC code 
+
 1. VPC - 192.168.0.0/16
 2. Create IGW
    - IGW attach to VPC
