@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 resource "aws_vpc" "myvpc" {
-  cidr_block = "192.168.0.0/16"
+  cidr_block = var.vpc_cidr
 }
 
 resource "aws_internet_gateway" "myigw" {
@@ -12,14 +12,14 @@ resource "aws_internet_gateway" "myigw" {
 
 resource "aws_subnet" "mypubsub" {
   vpc_id     = aws_vpc.myvpc.id
-  cidr_block = "192.168.1.0/24"
-  availability_zone = "ap-south-1a"
+  cidr_block = var.pub_cidr
+  availability_zone = var.pub_az
 }
 
 resource "aws_subnet" "myprivsub" {
   vpc_id     = aws_vpc.myvpc.id
-  cidr_block = "192.168.2.0/24"
-  availability_zone = "ap-south-1b"
+  cidr_block = var.prvt_cidr
+  availability_zone = var.prvt_az
 }
 resource "aws_route_table" "mypubroutetb" {
   vpc_id = aws_vpc.myvpc.id
@@ -31,7 +31,7 @@ resource "aws_route_table" "myprivroutetb" {
 
 resource "aws_route" "pub_route" {
   route_table_id            = aws_route_table.mypubroutetb.id
-  destination_cidr_block    = "0.0.0.0/0"
+  destination_cidr_block    = var.dest_cidr
   gateway_id   = aws_internet_gateway.myigw.id
 }
 
@@ -45,7 +45,7 @@ resource "aws_nat_gateway" "mynat" {
 
 resource "aws_route" "priv_route" {
   route_table_id            = aws_route_table.myprivroutetb.id
-  destination_cidr_block    = "0.0.0.0/0"
+  destination_cidr_block    = var.dest_cidr
   gateway_id   = aws_nat_gateway.mynat.id
 }
 
