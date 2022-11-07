@@ -1,4 +1,4 @@
-AWS VPC setup IaC code 
+Deploy VPC components using Terraform IaC.
 
 1. VPC - 192.168.0.0/16
 2. Create IGW
