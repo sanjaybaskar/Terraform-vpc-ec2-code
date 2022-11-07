@@ -15,9 +15,10 @@
     - Which Route Table?
     - destination - 0.0.0.0/0
     - target - IGW
-8. Create NAT GW
+8. EIP 
+
+9. Create NAT GW
     - Which Subnet?
-9. EIP 
     - EIP attach NAT GW
 10. Create Private Route
     - Which Route Table?
