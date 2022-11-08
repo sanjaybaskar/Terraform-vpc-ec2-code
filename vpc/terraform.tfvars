@@ -1,0 +1,6 @@
+vpc_cidr ="192.168.0.0/16"
+pub_cidr ="192.168.1.0/24"
+prvt_cidr = "192.168.2.0/24"
+dest_cidr = "0.0.0.0/0"
+pub_az = "ap-south-1a"
+prvt_az = "ap-south-1b"
