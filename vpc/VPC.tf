@@ -2,31 +2,31 @@ provider "aws" {
   region = "ap-south-1"
 }
 
-resource "aws_vpc" "myvpc" {
+resource "aws_vpc" "myvpc1" {
   cidr_block = var.vpc_cidr
 }
 
 resource "aws_internet_gateway" "myigw" {
-  vpc_id = aws_vpc.myvpc.id
+  vpc_id = aws_vpc.myvpc1.id
 }
 
 resource "aws_subnet" "mypubsub" {
-  vpc_id     = aws_vpc.myvpc.id
+  vpc_id     = aws_vpc.myvpc1.id
   cidr_block = var.pub_cidr
   availability_zone = var.pub_az
 }
 
 resource "aws_subnet" "myprivsub" {
-  vpc_id     = aws_vpc.myvpc.id
+  vpc_id     = aws_vpc.myvpc1.id
   cidr_block = var.prvt_cidr
   availability_zone = var.prvt_az
 }
 resource "aws_route_table" "mypubroutetb" {
-  vpc_id = aws_vpc.myvpc.id
+  vpc_id = aws_vpc.myvpc1.id
 }
 
 resource "aws_route_table" "myprivroutetb" {
-  vpc_id = aws_vpc.myvpc.id
+  vpc_id = aws_vpc.myvpc1.id
 }
 
 resource "aws_route" "pub_route" {
