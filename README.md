@@ -6,4 +6,4 @@ This repository contains the VPC, EC2 instance creation Terraform IaC code.
 
 - EC2-module have the module template for EC2 instance creation without hardcoded values.
 
-Note: Edit buckt_name, vpc_id, subnet_id
+Note: Edit bucket_name, vpc_id, subnet_id before executing the code.
