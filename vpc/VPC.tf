@@ -1,9 +1,13 @@
 provider "aws" {
-  region = "ap-south-1"
+  region = "us-east-1"
 }
 
 resource "aws_vpc" "myvpc1" {
   cidr_block = var.vpc_cidr
+
+      tags = {
+    Name = "sk-vpc"
+  }
 }
 
 resource "aws_internet_gateway" "myigw" {
